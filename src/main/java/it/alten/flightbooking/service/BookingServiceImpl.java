@@ -26,16 +26,19 @@ public class BookingServiceImpl implements BookingService{
 
     @Override
     public List<Booking> getFlightBookings(String flightNumber, Date flightDate) {
-        return null;
+        return repo.findBookingsByFlightNumberAndFlightDate(flightNumber,flightDate);
     }
 
     @Override
     public List<Booking> getPassengerBooklings(String passengerName) {
-        return null;
+        return repo.findByPassengerName(passengerName);
     }
 
     @Override
     public boolean cancelBooking(Long id) {
+        if(repo.findById(id).isPresent()){
+            return true;
+        }
         return false;
     }
 }
