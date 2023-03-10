@@ -16,6 +16,8 @@ public class BookingDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date flightDate;
 
+    private String flightNumber;
+
     @DateTimeFormat(pattern = "HH:mm:ss")
     private LocalDateTime depatureTime;
 
