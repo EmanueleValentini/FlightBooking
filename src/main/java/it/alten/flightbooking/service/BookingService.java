@@ -5,6 +5,7 @@ import it.alten.flightbooking.model.Flight;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public interface BookingService {
 
@@ -14,4 +15,6 @@ public interface BookingService {
     List<Booking> getPassengerBookings(String passengerName);
 
     boolean cancelBooking(Long id);
+
+    Optional<Booking> findById(Long id);
 }
