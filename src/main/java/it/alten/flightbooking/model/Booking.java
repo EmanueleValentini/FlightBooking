@@ -35,7 +35,7 @@ public class Booking implements Serializable {
 
     private String takeOffAirport;
 
-    private Integer seatsBooked;
+    private Integer numSeats;
 
     private String passengerName;
 

@@ -28,7 +28,7 @@ public class BookingDto {
 
     private String takeOffAirport;
 
-    private Integer seatsBooked;
+    private Integer numSeats;
 
     private String passengerName;
 }

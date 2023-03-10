@@ -7,10 +7,11 @@ import java.util.Date;
 import java.util.List;
 
 public interface BookingService {
-    List<Booking> findBookingsByFlightNumberAndFlightDate(String flightNumber, Date flightDate);
 
-    Flight findByFlightNumberAndFlightDate(String flightNumber, Date flightDate);
+    boolean bookFlight(String flightNumber, Date flightDate, String passengerName, int numSeats);
+    List<Booking> getFlightBookings(String flightNumber, Date flightDate);
 
-    List<Flight> findByTakeOffAirportAndLandingAirportAndFlightDate
-            (String takeOffAirport, String depatureAirport, Date flightDate);
+    List<Booking> getPassengerBooklings(String passengerName);
+
+    boolean cancelBooking(Long id);
 }
