@@ -2,6 +2,7 @@ package it.alten.flightbooking.repository;
 
 import it.alten.flightbooking.model.Flight;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,7 @@ public class FlightRepository {
 
     private List<Flight> flights = new ArrayList<>();
     public FlightRepository(){
-        Date date = new Date();
+        LocalDate date = new LocalDate(2023,03,10);
         flights.add(
                 new Flight(1,"FCO","BCN","10:30:00","12:30:00",date,200,"AAAA")
         );

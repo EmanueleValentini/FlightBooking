@@ -2,13 +2,16 @@ package it.alten.flightbooking.service;
 
 import it.alten.flightbooking.model.Booking;
 import it.alten.flightbooking.model.Flight;
+import it.alten.flightbooking.model.dto.BookingDto;
 import it.alten.flightbooking.repository.BookingRepository;
 import it.alten.flightbooking.repository.FlightRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlightBookingSystem implements BookingService{
@@ -53,5 +56,22 @@ public class FlightBookingSystem implements BookingService{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<Booking> findAll() {
+        return repo.findAll();
+    }
+
+    @Override
+    public Optional<Booking> findById(Long id) {
+        return Optional.empty();
+    }
+
+
+    @Override
+    public Booking save(BookingDto bookingDto) {
+        ModelMapper modelMapper = new ModelMapper();
+        return repo.save(modelMapper.map(bookingDto, Booking.class));
     }
 }

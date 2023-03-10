@@ -2,6 +2,7 @@ package it.alten.flightbooking.service;
 
 import it.alten.flightbooking.model.Booking;
 import it.alten.flightbooking.model.Flight;
+import it.alten.flightbooking.model.dto.BookingDto;
 
 import java.util.Date;
 import java.util.List;
@@ -16,5 +17,8 @@ public interface BookingService {
 
     boolean cancelBooking(Long id);
 
+    List<Booking> findAll();
+
     Optional<Booking> findById(Long id);
+    Booking save(BookingDto bookingDto);
 }

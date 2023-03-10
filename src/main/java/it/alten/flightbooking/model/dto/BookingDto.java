@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 @Getter
@@ -14,7 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class BookingDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date flightDate;
+    private LocalDate flightDate;
 
     private String flightNumber;
 

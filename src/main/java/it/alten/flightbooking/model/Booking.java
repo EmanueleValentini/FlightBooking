@@ -8,8 +8,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,7 +24,7 @@ public class Booking implements Serializable {
 
     private String flightNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date flightDate;
+    private LocalDate flightDate;
 
     @DateTimeFormat(pattern = "HH:mm:ss")
     private LocalDateTime depatureTime;

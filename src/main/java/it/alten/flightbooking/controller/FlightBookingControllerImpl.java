@@ -35,7 +35,21 @@ public class FlightBookingControllerImpl implements FlightBookingController{
     }
 
     @Override
+    @GetMapping()
     public ResponseEntity<List<Booking>> findAll() {
-        return null;
+        List<Booking> bookings = bookingService.findAll();
+        return new ResponseEntity<>(bookings,HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Optional<Booking>> deleteById(@PathVariable("id") Long id){
+        bookingService.cancelBooking(id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<Booking> save(@RequestBody  BookingDto bookingDto) {
+        Booking bookingSaved=bookingService.save(bookingDto);
+        return new ResponseEntity<>(bookingSaved, HttpStatus.CREATED);
     }
 }
