@@ -11,7 +11,7 @@ public interface BookingService {
     boolean bookFlight(String flightNumber, Date flightDate, String passengerName, int numSeats);
     List<Booking> getFlightBookings(String flightNumber, Date flightDate);
 
-    List<Booking> getPassengerBooklings(String passengerName);
+    List<Booking> getPassengerBookings(String passengerName);
 
     boolean cancelBooking(Long id);
 }
