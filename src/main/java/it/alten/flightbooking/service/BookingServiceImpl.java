@@ -16,7 +16,12 @@ public class BookingServiceImpl implements BookingService{
 
     @Override
     public boolean bookFlight(String flightNumber, Date flightDate, String passengerName, int numSeats) {
-        if(repo.findBookingsByFlightNumberAndFlightDate(flightNumber,flightDate).isEmpty() );
+        if(!repo.findBookingsByFlightNumberAndFlightDate(flightNumber,flightDate).isEmpty()  &&
+            !repo.findByPassengerName(passengerName).isEmpty()   &&
+                !repoFlight.findByFlightNumber(flightNumber).getNumSeats>numSeats){
+            return true;
+        }
+        return false;
     }
 
     @Override
