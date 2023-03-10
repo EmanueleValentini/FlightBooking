@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class BookingServiceImpl implements BookingService{
+public class FlightBookingSystem implements BookingService{
 
     @Autowired
     BookingRepository repo;

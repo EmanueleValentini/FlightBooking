@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("/bookings")
-public interface BookingController {
+public interface FlightBookingController {
     @PostMapping()
     ResponseEntity<Booking> save(@RequestBody BookingDto bookingDto);
 
