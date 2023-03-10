@@ -3,6 +3,7 @@ package it.alten.flightbooking.service;
 import it.alten.flightbooking.model.Booking;
 import it.alten.flightbooking.model.Flight;
 import it.alten.flightbooking.repository.BookingRepository;
+import it.alten.flightbooking.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +16,14 @@ public class FlightBookingSystem implements BookingService{
     @Autowired
     BookingRepository repo;
 
-    @Autowired
-    FlightRepository repoFlight;
+    FlightRepository flightRepo = new FlightRepository();
+
 
     @Override
     public boolean bookFlight(String flightNumber, Date flightDate, String passengerName, int numSeats) {
         if(!repo.findBookingsByFlightNumberAndFlightDate(flightNumber,flightDate).isEmpty()  &&
             !repo.findByPassengerName(passengerName).isEmpty()   &&
-                !repoFlight.findByFlightNumber(flightNumber).getNumSeats>numSeats){
+                flightRepo.findByFlightNumber(flightNumber).getSeats()>=numSeats){
             return true;
         }
         return false;
@@ -34,11 +35,11 @@ public class FlightBookingSystem implements BookingService{
     }
 
     public int getAvailableSeats(String flightNumber, Date flightDate){
-        return repoFlight.findByFlightNumberAndFlightDate(flightNumber,flightDate).getSeats();
+        return flightRepo.findByFlightNumberAndFlightDate(flightNumber,flightDate).getSeats();
     }
 
     public List<Flight> getFlights(String fromAirport, String toAirport, Date date){
-        return repoFlight.findByFromAirportAndToAirportAndDate(fromAirport,toAirport,date);
+        return flightRepo.findByFromAirportAndToAirportAndDate(fromAirport,toAirport,date);
     }
 
     @Override
